@@ -38,7 +38,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.TopScoreLabel = new System.Windows.Forms.Label();
+            this.Muted = new System.Windows.Forms.CheckBox();
+            this.People = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.TrackBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.People)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -90,6 +95,7 @@
             this.TrackBar.Size = new System.Drawing.Size(776, 45);
             this.TrackBar.TabIndex = 4;
             this.TrackBar.Value = 2;
+            this.TrackBar.Scroll += new System.EventHandler(this.TrackBar_Scroll);
             // 
             // label2
             // 
@@ -128,11 +134,68 @@
             this.label5.Text = "Game by memetrollsXD";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
+            // TopScoreLabel
+            // 
+            this.TopScoreLabel.AutoSize = true;
+            this.TopScoreLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.TopScoreLabel.Location = new System.Drawing.Point(6, 7);
+            this.TopScoreLabel.Name = "TopScoreLabel";
+            this.TopScoreLabel.Size = new System.Drawing.Size(96, 20);
+            this.TopScoreLabel.TabIndex = 9;
+            this.TopScoreLabel.Text = "Top Score: ";
+            // 
+            // Muted
+            // 
+            this.Muted.AutoSize = true;
+            this.Muted.Location = new System.Drawing.Point(9, 428);
+            this.Muted.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Muted.Name = "Muted";
+            this.Muted.Size = new System.Drawing.Size(50, 17);
+            this.Muted.TabIndex = 10;
+            this.Muted.Text = "Mute";
+            this.Muted.UseVisualStyleBackColor = true;
+            this.Muted.CheckedChanged += new System.EventHandler(this.Muted_CheckedChanged);
+            // 
+            // People
+            // 
+            this.People.Location = new System.Drawing.Point(758, 12);
+            this.People.Maximum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.People.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.People.Name = "People";
+            this.People.Size = new System.Drawing.Size(30, 20);
+            this.People.TabIndex = 11;
+            this.People.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(702, 35);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(91, 13);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "Number of people";
+            // 
             // RGBStart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.People);
+            this.Controls.Add(this.Muted);
+            this.Controls.Add(this.TopScoreLabel);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -148,6 +211,7 @@
             this.Text = "RGB (Random Good Bogus)";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RGBStart_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.TrackBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.People)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -164,6 +228,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label TopScoreLabel;
+        private System.Windows.Forms.CheckBox Muted;
+        private System.Windows.Forms.NumericUpDown People;
+        private System.Windows.Forms.Label label7;
     }
 }
 

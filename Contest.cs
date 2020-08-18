@@ -14,10 +14,10 @@ namespace RGBGame
     // Features that I still need to add:
     // - Contest Mode
     // - Sounds
-    public partial class Game : Form
+    public partial class Contest : Form
     {
 
-        public Game()
+        public Contest()
         {
             InitializeComponent();
         }
@@ -28,13 +28,16 @@ namespace RGBGame
             if (Diff == 1)
             {
                 timer1.Interval = 500;
-            } else if (Diff == 2)
+            }
+            else if (Diff == 2)
             {
                 timer1.Interval = 400;
-            } else if (Diff == 3)
+            }
+            else if (Diff == 3)
             {
                 timer1.Interval = 250;
-            } else
+            }
+            else
             {
                 timer1.Interval = RGBStart.Difficulty;
             }
@@ -73,7 +76,8 @@ namespace RGBGame
             {
                 SoundPlayer player = new SoundPlayer(Properties.Resources.beep);
                 player.Play();
-            } else
+            }
+            else
             {
                 return;
             }
@@ -96,6 +100,88 @@ namespace RGBGame
         {
             MessageBox.Show("Boomer alert");
         }
+
+        private void GameOver()
+        {
+            Score.ScoreInt = 0;
+            Properties.Settings.Default.InGame = false;
+            Properties.Settings.Default.Save();
+            RGBStart gui2 = new RGBStart();
+            gui2.Show();
+            this.Hide();
+        }
+
+        private void ContestCheckF()
+        {
+            var Settings = Properties.Settings.Default;
+            // People is max players
+            // Person is what player out of the all players is playing (1-3)
+            if (Settings.Person < Settings.People) // Checks if all people already played
+            {
+                if (Settings.Person == 1)
+                {
+                    Settings.Player1 = Score.ScoreInt;
+                    Score.ScoreInt = 0;
+                    Settings.Person++;
+                }
+                else if (Settings.Person == 2)
+                {
+                    Settings.Player2 = Score.ScoreInt;
+                    Score.ScoreInt = 0;
+                    Settings.Person++;
+                }
+                else if (Settings.Person == 3)
+                {
+                    Settings.Player3 = Score.ScoreInt;
+                    Score.ScoreInt = 0;
+                    Settings.Person++;
+                }
+            } else
+            {
+                if (Settings.People == 2)
+                {
+                    Settings.Player2 = Score.ScoreInt;
+                    MessageBox.Show("Good job! Here are your scores:\n\n" +
+"Player1: " + Settings.Player1 + "\n" +
+"Player2: " + Settings.Player2 + "\n");
+                    Score.ScoreInt = 0;
+                    GameOver();
+                } else
+                {
+                    Settings.Player3 = Score.ScoreInt;
+                    MessageBox.Show("Good job! Here are your scores:\n\n" +
+"Player1: " + Settings.Player1 + "\n" +
+"Player2: " + Settings.Player2 + "\n" +
+"Player3: " + Settings.Player3 + "\n");
+                    Score.ScoreInt = 0;
+                    GameOver();
+                }
+
+            }
+        }
+
+        private void ContestCheck()
+        {
+            var Settings = Properties.Settings.Default;
+            // People is max players
+            // Person is what player out of the all players is playing (1-3)
+            if (Settings.Person < Settings.People) // Checks if all people already played
+            {
+                if (Settings.Person == 1)
+                {
+                    Settings.Player1 = Score.ScoreInt;
+                }
+                else if (Settings.Person == 2)
+                {
+                    Settings.Player2 = Score.ScoreInt;
+                }
+                else if (Settings.Person == 3)
+                {
+                    Settings.Player3 = Score.ScoreInt;
+                }
+            }
+        }
+
         private void ColorBtn_Click(object sender, EventArgs e)
         {
             if (Properties.Settings.Default.InGame == true)
@@ -107,34 +193,15 @@ namespace RGBGame
                     Score.ScoreInt++;
                     ChangeColor();
                     PlaySound();
+                    ContestCheck();
                 }
-            else
+                else
                 {
-                    if (Properties.Settings.Default.TopScore < Score.ScoreInt)
-                    {
-                        PlaySoundN();
-                        MessageBox.Show("New top score! Score: " + Score.ScoreInt);
-                        Properties.Settings.Default.TopScore = Score.ScoreInt;
-                        Properties.Settings.Default.InGame = false;
-                        Score.ScoreInt = 0;
-                        Properties.Settings.Default.Save();
-                        RGBStart gui2 = new RGBStart();
-                        gui2.Show();
-                        this.Hide();
-                    }
-                    else
-                    {
-                        PlaySoundN();
-                        MessageBox.Show("Game over! Score: " + Score.ScoreInt);
-                        Score.ScoreInt = 0;
-                        Properties.Settings.Default.InGame = false;
-                        Properties.Settings.Default.Save();
-                        RGBStart gui2 = new RGBStart();
-                        gui2.Show();
-                        this.Hide();
-                    }
+                    PlaySoundN();
+                    ContestCheckF();
                 }
-            } else
+            }
+            else
             {
                 Properties.Settings.Default.InGame = true;
             }
@@ -142,9 +209,9 @@ namespace RGBGame
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            Playerlbl.Text = "Player " + Properties.Settings.Default.Person;
             ScoreLbl.Text = "Score: " + Score.ScoreInt;
             string ColorStr = RGBStart.Color;
-
 
             if (ColorStr == "Red")
             {
@@ -169,10 +236,10 @@ namespace RGBGame
 
         private void Game_FormClosing(object sender, FormClosingEventArgs e)
         {
-                if (MessageBox.Show("Do you really want to exit RGB?", "Random Good Bogus", MessageBoxButtons.YesNo) != DialogResult.Yes)
-                {
-                    e.Cancel = true;
-                }
+            if (MessageBox.Show("Do you really want to exit RGB?", "Random Good Bogus", MessageBoxButtons.YesNo) != DialogResult.Yes)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

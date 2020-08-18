@@ -1,6 +1,6 @@
 ﻿namespace RGBGame
 {
-    partial class Game
+    partial class Contest
     {
         /// <summary>
         /// Required designer variable.
@@ -29,13 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Game));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Contest));
             this.ColorBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.ScoreLbl = new System.Windows.Forms.Label();
             this.YourColor = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.Playerlbl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ColorBtn
@@ -46,8 +47,8 @@
             this.ColorBtn.Size = new System.Drawing.Size(205, 178);
             this.ColorBtn.TabIndex = 0;
             this.ColorBtn.UseVisualStyleBackColor = false;
-            this.ColorBtn.Click += new System.EventHandler(this.ColorBtn_Click);
             this.ColorBtn.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ColorBtn_MouseDoubleClick);
+            this.ColorBtn.Click += new System.EventHandler(this.ColorBtn_Click);
             // 
             // label1
             // 
@@ -94,12 +95,23 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Your Color";
             // 
-            // Game
+            // Playerlbl
+            // 
+            this.Playerlbl.AutoSize = true;
+            this.Playerlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F);
+            this.Playerlbl.Location = new System.Drawing.Point(12, 26);
+            this.Playerlbl.Name = "Playerlbl";
+            this.Playerlbl.Size = new System.Drawing.Size(113, 31);
+            this.Playerlbl.TabIndex = 5;
+            this.Playerlbl.Text = "Player 1";
+            // 
+            // Contest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Playerlbl);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.YourColor);
             this.Controls.Add(this.ScoreLbl);
@@ -107,7 +119,7 @@
             this.Controls.Add(this.ColorBtn);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "Game";
+            this.Name = "Contest";
             this.Text = "RGB (Random Good Bogus)";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Game_FormClosing);
             this.Load += new System.EventHandler(this.Game_Load);
@@ -126,5 +138,6 @@
         private System.Windows.Forms.Label ScoreLbl;
         private System.Windows.Forms.Button YourColor;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label Playerlbl;
     }
 }
