@@ -56,7 +56,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 50.25F);
             this.label1.Location = new System.Drawing.Point(295, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(178, 76);
+            this.label1.Size = new System.Drawing.Size(222, 95);
             this.label1.TabIndex = 1;
             this.label1.Text = "RGB";
             // 
@@ -71,9 +71,9 @@
             this.ScoreLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 50.25F);
             this.ScoreLbl.Location = new System.Drawing.Point(280, 365);
             this.ScoreLbl.Name = "ScoreLbl";
-            this.ScoreLbl.Size = new System.Drawing.Size(245, 76);
+            this.ScoreLbl.Size = new System.Drawing.Size(411, 95);
             this.ScoreLbl.TabIndex = 2;
-            this.ScoreLbl.Text = "Score: ";
+            this.ScoreLbl.Text = "Loading...";
             this.ScoreLbl.Click += new System.EventHandler(this.ScoreLbl_Click);
             // 
             // YourColor
@@ -91,7 +91,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
             this.label2.Location = new System.Drawing.Point(713, 38);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 17);
+            this.label2.Size = new System.Drawing.Size(96, 22);
             this.label2.TabIndex = 4;
             this.label2.Text = "Your Color";
             // 
@@ -101,7 +101,7 @@
             this.Playerlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F);
             this.Playerlbl.Location = new System.Drawing.Point(12, 26);
             this.Playerlbl.Name = "Playerlbl";
-            this.Playerlbl.Size = new System.Drawing.Size(113, 31);
+            this.Playerlbl.Size = new System.Drawing.Size(142, 39);
             this.Playerlbl.TabIndex = 5;
             this.Playerlbl.Text = "Player 1";
             // 

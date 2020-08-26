@@ -21,7 +21,8 @@ namespace RGBGame
         }
         private void Game_Load(object sender, EventArgs e)
         {
-            int Diff = RGBStart.Difficulty;
+            //int Diff = RGBStart.Difficulty;
+            int Diff = Properties.Settings.Default.Diff;
             timer1.Start();
             if (Diff == 1)
             {
@@ -35,9 +36,9 @@ namespace RGBGame
             {
                 timer1.Interval = 350;
             }
-            else
+            else if (Diff > 3)
             {
-                timer1.Interval = RGBStart.Difficulty;
+                timer1.Interval = Properties.Settings.Default.Diff;
             }
 
         }
