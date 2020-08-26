@@ -81,6 +81,12 @@
     <Compile Include="Contest.Designer.cs">
       <DependentUpon>Contest.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomDifficulty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomDifficulty.Designer.cs">
+      <DependentUpon>CustomDifficulty.cs</DependentUpon>
+    </Compile>
     <Compile Include="Start.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +103,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Contest.resx">
       <DependentUpon>Contest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomDifficulty.resx">
+      <DependentUpon>CustomDifficulty.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Game.resx">
       <DependentUpon>Game.cs</DependentUpon>
@@ -142,6 +151,7 @@
   <ItemGroup>
     <Content Include="Resources\beepn.wav" />
     <Content Include="Resources\beep.wav" />
+    <Content Include="Resources\rgb.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

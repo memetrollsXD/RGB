@@ -14,7 +14,7 @@ namespace RGBGame
     public partial class RGBStart : Form
     {
         public static string Color;
-        public static int Difficulty;
+        public static int Difficulty = Properties.Settings.Default.Diff;
         public RGBStart()
         {
             InitializeComponent();
@@ -22,6 +22,15 @@ namespace RGBGame
 
             if (Properties.Settings.Default.InGame == false) {
                 TopScoreLabel.Text = "Top Score: " + Properties.Settings.Default.TopScore;
+            }
+            if (Properties.Settings.Default.Diff > TrackBar.Value)
+            {
+                TrackBar.Enabled = false;
+            }
+            else
+            {
+                Properties.Settings.Default.Diff = TrackBar.Value;
+                TrackBar.Value = Properties.Settings.Default.Diff;
             }
 
         }
@@ -64,7 +73,7 @@ namespace RGBGame
         private void RedBtn_Click(object sender, EventArgs e)
         {
             Color = "Red";
-            Difficulty = TrackBar.Value;
+            Difficulty = Properties.Settings.Default.Diff;
             if (People.Value > 1)
             {
                 ContestConfig();
@@ -80,7 +89,7 @@ namespace RGBGame
         private void GreenBtn_Click(object sender, EventArgs e)
         {
             Color = "Green";
-            Difficulty = TrackBar.Value;
+            Difficulty = Properties.Settings.Default.Diff;
             if (People.Value > 1)
             {
                 ContestConfig();
@@ -97,7 +106,7 @@ namespace RGBGame
         private void BlueBtn_Click_1(object sender, EventArgs e)
         {
             Color = "Blue";
-            Difficulty = TrackBar.Value;
+            Difficulty = Properties.Settings.Default.Diff;
             if (People.Value > 1)
             {
                 ContestConfig();
@@ -123,7 +132,8 @@ namespace RGBGame
         {
             SoundPlayer player = new SoundPlayer(Properties.Resources.beep);
             player.Play();
-
+            Form CustomDifficulty = new CustomDifficulty();
+            CustomDifficulty.Show();
         }
 
         private void Muted_CheckedChanged(object sender, EventArgs e)
@@ -139,8 +149,22 @@ namespace RGBGame
 
         private void TrackBar_Scroll(object sender, EventArgs e)
         {
-            Properties.Settings.Default.Diff = TrackBar.Value;
-            TrackBar.Value = Properties.Settings.Default.Diff;
+            if (Properties.Settings.Default.Diff > TrackBar.Value)
+            {
+                TrackBar.Enabled = false;
+            } else
+            {
+                Properties.Settings.Default.Diff = TrackBar.Value;
+                TrackBar.Value = Properties.Settings.Default.Diff;
+            }
+        }
+
+        private void TrackBar_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (!TrackBar.Enabled)
+            {
+                MessageBox.Show("You can reset your custom difficulty at the custom difficulty settings.");
+            }
         }
     }
     

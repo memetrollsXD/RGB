@@ -11,9 +11,7 @@ using System.Media;
 
 namespace RGBGame
 {
-    // Features that I still need to add:
-    // - Contest Mode
-    // - Sounds
+   
     public partial class Contest : Form
     {
 
@@ -35,7 +33,7 @@ namespace RGBGame
             }
             else if (Diff == 3)
             {
-                timer1.Interval = 250;
+                timer1.Interval = 350;
             }
             else
             {
