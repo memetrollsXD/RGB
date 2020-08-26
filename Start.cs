@@ -23,16 +23,14 @@ namespace RGBGame
             if (Properties.Settings.Default.InGame == false) {
                 TopScoreLabel.Text = "Top Score: " + Properties.Settings.Default.TopScore;
             }
-            if (Properties.Settings.Default.Diff > TrackBar.Value)
+            if (Properties.Settings.Default.CustomDiff)
             {
-                TrackBar.Enabled = false;
-            }
-            else
+                    TrackBar.Value = 3;
+            } else
             {
-                Properties.Settings.Default.Diff = TrackBar.Value;
                 TrackBar.Value = Properties.Settings.Default.Diff;
+                Properties.Settings.Default.Diff = TrackBar.Value;
             }
-
         }
 
         private void LoadSettings()
@@ -149,10 +147,11 @@ namespace RGBGame
 
         private void TrackBar_Scroll(object sender, EventArgs e)
         {
-            if (Properties.Settings.Default.Diff > TrackBar.Value)
+            if (Properties.Settings.Default.CustomDiff)
             {
-                TrackBar.Enabled = false;
-            } else
+                TrackBar.Value = 3;
+            }
+            else
             {
                 Properties.Settings.Default.Diff = TrackBar.Value;
                 TrackBar.Value = Properties.Settings.Default.Diff;

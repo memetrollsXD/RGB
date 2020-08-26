@@ -33,6 +33,10 @@ namespace RGBGame
             decimal customdiffdec = customDiffNV.Value;
             int customdiffint = Decimal.ToInt32(customdiffdec);
             Properties.Settings.Default.Diff = customdiffint;
+            if (customdiffint > 3)
+            {
+                Properties.Settings.Default.CustomDiff = true;
+            }
             this.Close();
         }
 
@@ -44,6 +48,7 @@ namespace RGBGame
         private void ResetBtn_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.Diff = 2;
+            Properties.Settings.Default.CustomDiff = false;
             this.Close();
         }
 

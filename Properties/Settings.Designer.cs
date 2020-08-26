@@ -130,5 +130,17 @@ namespace RGBGame.Properties {
                 this["Player3"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CustomDiff {
+            get {
+                return ((bool)(this["CustomDiff"]));
+            }
+            set {
+                this["CustomDiff"] = value;
+            }
+        }
     }
 }
